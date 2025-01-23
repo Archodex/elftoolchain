@@ -295,4 +295,29 @@ typedef struct {
 #define SHT_SUNW_verneed SHT_GNU_verneed
 #define SHT_SUNW_versym SHT_GNU_versym
 
+// elfutils stubs
+
+typedef Elf64_Verdef GElf_Verdef;
+typedef Elf64_Verdaux GElf_Verdaux;
+typedef Elf64_Versym GElf_Versym;
+typedef Elf64_Nhdr GElf_Nhdr;
+
+static inline GElf_Versym *gelf_getversym (Elf_Data *data, int ndx, GElf_Versym *dst) {
+	*dst = 0;
+	return dst;
+}
+
+static inline GElf_Verdef *gelf_getverdef (Elf_Data *data, int offset, GElf_Verdef *dst) {
+	return 0;
+}
+
+static inline GElf_Verdaux *gelf_getverdaux (Elf_Data *data, int offset, GElf_Verdaux *dst) {
+	return 0;
+}
+
+static inline size_t gelf_getnote (Elf_Data *data, size_t offset, GElf_Nhdr *result,
+	      size_t *name_offset, size_t *desc_offset) {
+	return 0;
+}
+
 #endif	/* _LIBELF_H_ */
