@@ -31,7 +31,7 @@
 
 #include <sys/types.h>
 
-#include <elfdefinitions.h>
+#include <elf.h>
 
 /* Library private data structures */
 typedef struct _Elf Elf;
@@ -252,5 +252,48 @@ Elf_Data	*elf64_xlatetom(Elf_Data *_dst, const Elf_Data *_src,
 #ifdef __cplusplus
 }
 #endif
+
+// From elfdefinitions.h
+
+/*
+ * Capability descriptors.
+ */
+
+/* 32-bit capability descriptor. */
+typedef struct {
+	Elf32_Word	c_tag;	     /* Type of entry. */
+	union {
+		Elf32_Word	c_val; /* Integer value. */
+		Elf32_Addr	c_ptr; /* Pointer value. */
+	} c_un;
+} Elf32_Cap;
+
+/* 64-bit capability descriptor. */
+typedef struct {
+	Elf64_Xword	c_tag;	     /* Type of entry. */
+	union {
+		Elf64_Xword	c_val; /* Integer value. */
+		Elf64_Addr	c_ptr; /* Pointer value. */
+	} c_un;
+} Elf64_Cap;
+
+typedef uint64_t	Elf32_Lword;	/* Unsigned long integer. */
+typedef uint64_t	Elf64_Lword;	/* Unsigned long integer. */
+
+/*
+ * The header for GNU-style hash sections.
+ */
+
+typedef struct {
+	uint32_t	gh_nbuckets;	/* Number of hash buckets. */
+	uint32_t	gh_symndx;	/* First visible symbol in .dynsym. */
+	uint32_t	gh_maskwords;	/* #maskwords used in bloom filter. */
+	uint32_t	gh_shift2;	/* Bloom filter shift count. */
+} Elf_GNU_Hash_Header;
+
+#define SHT_SUNW_dof 0x6FFFFFF4UL
+#define SHT_SUNW_verdef SHT_GNU_verdef
+#define SHT_SUNW_verneed SHT_GNU_verneed
+#define SHT_SUNW_versym SHT_GNU_versym
 
 #endif	/* _LIBELF_H_ */
