@@ -232,6 +232,8 @@ int	_libelf_setshstrndx(Elf *_e, void *_eh, int _elfclass,
 Elf_Data *_libelf_xlate(Elf_Data *_d, const Elf_Data *_s,
     unsigned int _encoding, int _elfclass, int _direction);
 int	_libelf_xlate_shtype(uint32_t _sht);
+
+Elf	*elf_open(int _fd);
 #ifdef __cplusplus
 }
 #endif
