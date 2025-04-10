@@ -19,7 +19,6 @@ SRCS=	elf.c							\
 	elf_kind.c						\
 	elf_memory.c						\
 	elf_next.c						\
-	elf_open.c						\
 	elf_rand.c						\
 	elf_rawfile.c						\
 	elf_phnum.c						\
@@ -92,7 +91,6 @@ MAN=	elf.3							\
 	elf_kind.3						\
 	elf_memory.3						\
 	elf_next.3						\
-	elf_open.3						\
 	elf_rawfile.3						\
 	elf_rand.3						\
 	elf_strptr.3						\
@@ -132,7 +130,6 @@ MLINKS+= \
 	elf_getscn.3 elf_newscn.3		\
 	elf_getscn.3 elf_nextscn.3		\
 	elf_getshstrndx.3 elf_setshstrndx.3	\
-	elf_open.3 elf_openmemory.3             \
 	gelf_getcap.3 gelf_update_cap.3		\
 	gelf_getdyn.3 gelf_update_dyn.3		\
 	gelf_getmove.3 gelf_update_move.3	\
