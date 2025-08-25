@@ -1,3 +1,20 @@
+Archodex modified elftoolchain
+==============================
+
+Archodex uses this modified version of elftoolchain
+(https://sourceforge.net/projects/elftoolchain/) v0.7.1, the project's
+latest release. The modifications allow linking libbpf
+(https://github.com/libbpf/libbpf) with libelf from this package
+instead of libelf from elfutils (https://sourceware.org/elfutils/):
+
+- Add build support for the Arm64 architecture
+- Ensure compatibility with libbpf
+    - Remove elf_open(), which is not part of elfutils' libelf and
+      conflicts with libbpf's elf_open() function
+    - Add stubs for a few gelf
+      (https://man.freebsd.org/cgi/man.cgi?gelf(3)) functions
+      that are called by libbpf but do not need full implementations
+
 The Elftoolchain Project
 ========================
 
